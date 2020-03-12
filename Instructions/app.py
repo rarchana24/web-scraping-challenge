@@ -19,7 +19,8 @@ def index():
 def scrape():
     mars = client.db.mission_to_mars 
     mars_data = scrape_mars.scrape()
-    mars.replace_one({}, mars_data, upsert=True)
+    #mars.replace_one({}, mars_data, upsert=True)
+    mars.insert_one(mars_data)
     return redirect("http://localhost:5000/", code=302)
 
 if __name__ == "__main__":
